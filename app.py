@@ -34,6 +34,8 @@ import datetime
 import plotly.express as px
 import time
 import pydeck as pdk
+import SessionState  # Assuming SessionState.py lives on this folder
+    
 
 st.sidebar.title('Dashboard Control')
 control = st.sidebar.radio('Navigation Bar', ('Home', 'Live Tweet Feed', 'Time Series Analysis', 'XAI'))
@@ -750,18 +752,24 @@ elif control == 'XAI':
     st.sidebar.markdown('<h3 style="color:#8D3DAF;font-family: Garamond, serif;">0 represents Need</h3>', unsafe_allow_html=True)
     st.sidebar.markdown('<h3 style="color:#8D3DAF;font-family: Garamond, serif;">1 represents Availability</h3>', unsafe_allow_html=True)
     st.sidebar.markdown('<h3 style="color:#8D3DAF;font-family: Garamond, serif;">2 represents Others</h3>', unsafe_allow_html=True)
-       
-    h = st.slider('Select the Tweet using the slider', 0, len(X)-1, 18)       
+    
+    h = st.slider('Select the Tweet using the slider', 0, len(X)-1, 18)
+    
     idx=0 # the rows of the dataset
     explainable_exp = explainer_lime.explain_instance(X_tfidf.toarray()[h], model.predict_proba, num_features=10, labels=[0,1,2])
     #explainable_exp.show_in_notebook(show_table=True, show_all=False)
     html = explainable_exp.as_html()
     
-    
+    st.write('**Tweet ID:**', h)
     st.write('**Tweet:**', X[h])
     st.write('**Label:**', Y[h])
     
     components.html(html, height=800)
+    
+    
+    
+ 
+  
 
     
     

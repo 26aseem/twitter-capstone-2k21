@@ -331,7 +331,7 @@ elif control == 'Live Tweet Feed':
         lt_following = []
         
         while(diff < 10):
-            for tweet in tweepy.Cursor(api.search,q=hashtag,count=10,lang="en",since="2021-12-11").items():
+            for tweet in tweepy.Cursor(api.search_tweets,q=hashtag,count=10,lang="en",since="2021-12-11").items():
                 real_time = time.time()
                 diff = real_time - current_time
                 if diff >10:

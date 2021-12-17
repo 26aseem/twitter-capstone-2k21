@@ -1,3 +1,10 @@
 streamlit
 statsmodels
 seaborn
+lime
+sklearn
+nltk
+lightgbm
+tweepy
+plotly
+wordcloud

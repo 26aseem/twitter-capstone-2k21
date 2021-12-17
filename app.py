@@ -40,7 +40,10 @@ control = st.sidebar.radio('Navigation Bar', ('Home', 'Live Tweet Feed', 'Time S
 
 if control == 'Home':
     ### Sentiment Code goes here
-    st.title("Time Series Sentiment Analysis Of Natural Hazard Relief Operations Through Social Media Data")
+    
+    st.markdown('<h1 style="color:#8D3DAF;text-align:center;font-family: Garamond, serif;"><b>RAKSHAK</b></h1>',unsafe_allow_html=True)
+    st.markdown('<h2 style="color:#E07C24;text-align:center;font-family: Georgia, serif;"><b>Time Series Sentiment Analysis Of Natural Hazard Relief Operations Through Social Media Data</b></h2>',unsafe_allow_html=True)
+    
     #st.markdown("The dashboard will help the government and humanitarian aid agencies to plan and coordinate the natural disaster relief efforts, resulting in more people being saved and more effective distribution of emergency supplies during a natural hazard")
 
     st.header("Natural Hazard Data Collected Sample")
@@ -60,7 +63,6 @@ if control == 'Home':
     tweets['type'] = tweets['type'].map({0: 'Need', 1: 'Availability', 2: 'Other'})
     # Change column names for consistency
     tweets.columns = ['text', 'type']
-    print('Shape of the Dataset:',tweets.shape)
     # Dataset Description
     h = st.sidebar.slider('Select the number of tweets using the slider', 1, 100, 10)
     data_tweets = tweets.sample(h)
@@ -300,8 +302,8 @@ if control == 'Home':
 
 elif control == 'Live Tweet Feed':
     ### Libe Tweet feed goes here
-    st.title("Live Tweet Feed")
-    
+    st.markdown('<h1 style="color:Black;text-align:center;"><b>Live Tweet Feed</b></h1>',unsafe_allow_html=True)
+        
     st.header("Live Tweet Feed Sample")
     hashtag = str(st.text_input("Enter the keyword or hashtag for live twitter fee", "#coronavirus"))
     fetch_tweets = st.button("Fetch Tweets")
@@ -357,9 +359,7 @@ elif control == 'Live Tweet Feed':
 
 elif control == 'Time Series Analysis':
     ### Streamlit code starts here    
-    st.title("Time Series Analysis of Disaster Tweets")
-    st.markdown("The dashboard will help the government and humanitarian aid agencies to plan and coordinate the natural disaster relief efforts, resulting in more people being saved and more effective distribution of emergency supplies during a natural hazard")
-
+    st.markdown('<h1 style="color:Black;text-align:center;"><b>Time Series Analysis of Disaster Tweets</b></h1>',unsafe_allow_html=True)
     
     ### Time Series Code goes here
     
@@ -744,10 +744,13 @@ elif control == 'XAI':
     # Streamlit Code starts here
     st.title('XAI - Explainable Artificial Intelligence')
     st.markdown("The dashboard will help the users verify the efficiency of the classification model used here")
-    #st.sidebar.title("Select the Tweet from the database for XAI")
     
-    h = st.slider('Select the Tweet using the slider', 0, len(X)-1, 18)
-    
+    st.sidebar.markdown('<h2 style="color:#E07C24;">Class Labels</h2>',unsafe_allow_html=True)
+    st.sidebar.markdown('<h3 style="color:#8D3DAF;">0 represents Need</h3>', unsafe_allow_html=True)
+    st.sidebar.markdown('<h3 style="color:#8D3DAF;">1 represents Availability</h3>', unsafe_allow_html=True)
+    st.sidebar.markdown('<h3 style="color:#8D3DAF;">2 represents Others</h3>', unsafe_allow_html=True)
+       
+    h = st.slider('Select the Tweet using the slider', 0, len(X)-1, 18)       
     idx=0 # the rows of the dataset
     explainable_exp = explainer_lime.explain_instance(X_tfidf.toarray()[h], model.predict_proba, num_features=10, labels=[0,1,2])
     #explainable_exp.show_in_notebook(show_table=True, show_all=False)

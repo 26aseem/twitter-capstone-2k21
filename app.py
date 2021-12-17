@@ -439,7 +439,7 @@ elif control == 'Time Series Analysis':
         # Remove the already drawn tweets from the dataset
         tweets.drop(labels=list(tw.index.values),inplace=True)
     
-    
+       
     # Real Time Series starts here
     # Load Dataset
     df = pd.DataFrame(count_of_data).T
@@ -448,6 +448,13 @@ elif control == 'Time Series Analysis':
     df.set_index('Date', inplace=True)
     df.columns = ['Need', 'Availability']
     
+    # Delete this asap
+    count_of_data = [[44, 44, 54, 51, 42, 50, 48, 52, 44, 49, 50, 57, 44, 55, 52, 46, 49, 59, 44, 48, 56, 45, 54, 47, 49, 62, 45, 53, 43, 41], [42, 46, 33, 33, 35, 39, 33, 35, 36, 41, 37, 39, 38, 37, 37, 32, 32, 37, 44, 46, 43, 46, 33, 34, 44, 37, 45, 36, 39, 51]]
+    df = pd.read_csv('time_series.csv')
+    df['Date'] = pd.to_datetime(dates)
+    df.set_index('Date', inplace=True)
+    df.columns = ['Need', 'Availability']
+    # Delete above asap
     
     st.title("Twitter Data Description")
     chart_visual_tweets = st.selectbox('Select Chart/Plot type', 
@@ -547,13 +554,13 @@ elif control == 'Time Series Analysis':
     if chart_visual_time_series=="Availability":
         fig, ax = plt.subplots(figsize=(20, 6))
         if 'D' in options:
-            ax.plot(y, marker='o', linewidth=0.5, label='Daily',ls='solid', c='red')
+            ax.plot(z, marker='o', linewidth=0.5, label='Daily',ls='solid', c='red')
         if '3D' in options:
-            ax.plot(y.resample('3D').mean(),marker='o', markersize=8, linestyle='dashed', label='Half-Weekly Mean Resample')
+            ax.plot(z.resample('3D').mean(),marker='o', markersize=8, linestyle='dashed', label='Half-Weekly Mean Resample')
         if 'W' in options:
-            ax.plot(y.resample('W').mean(),marker='o', markersize=8, linestyle='-', label='Weekly Mean Resample')
+            ax.plot(z.resample('W').mean(),marker='o', markersize=8, linestyle='-', label='Weekly Mean Resample')
         if '2W' in options:
-            ax.plot(y.resample('2W').mean(),marker='o', markersize=8, linestyle='dotted', label='Bi-weekly Mean Resample')
+            ax.plot(z.resample('2W').mean(),marker='o', markersize=8, linestyle='dotted', label='Bi-weekly Mean Resample')
 
         ax.set_ylabel('Frequency')
         ax.set_xlabel('Date')

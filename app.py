@@ -275,7 +275,8 @@ if control == 'Home':
     #axes[2].set_ylabel('Number of Hashtag tweeted')
     #axes[2].title.set_text("COVID-19")
               
-    st.header("Select Start & End Date to display sentiments")
+    st.header("Sentiments of Tweets Collected")
+    st.caption("Select Start & End Date to display Sentiments of tweets collected")
     s_date = st.date_input("Start Date", min_value=datetime.datetime(2021, 4, 1), max_value=datetime.datetime(2021, 4, 30), value=datetime.datetime(2021, 4, 1))
     e_date = st.date_input("End Date", min_value=datetime.datetime(2021, 4, 1), max_value=datetime.datetime(2021, 4, 30), value=datetime.datetime(2021, 4, 30))
     data = pd.read_csv('sentiment_april.csv')[['Need','Availability']]
@@ -302,7 +303,7 @@ if control == 'Home':
 
 elif control == 'Live Tweet Feed':
     ### Libe Tweet feed goes here
-    st.markdown('<h1 style="color:Black;text-align:center;"><b>Live Tweet Feed</b></h1>',unsafe_allow_html=True)
+    st.markdown('<h1 style="color:#E07C24;;text-align:center;"><b>Live Tweet Feed</b></h1>',unsafe_allow_html=True)
         
     st.header("Live Tweet Feed Sample")
     hashtag = str(st.text_input("Enter the keyword or hashtag for live twitter fee", "#coronavirus"))
@@ -359,7 +360,7 @@ elif control == 'Live Tweet Feed':
 
 elif control == 'Time Series Analysis':
     ### Streamlit code starts here    
-    st.markdown('<h1 style="color:Black;text-align:center;"><b>Time Series Analysis of Disaster Tweets</b></h1>',unsafe_allow_html=True)
+    st.markdown('<h1 style="color:#E07C24;;text-align:center;"><b>Time Series Analysis of Disaster Tweets</b></h1>',unsafe_allow_html=True)
     
     ### Time Series Code goes here
     
@@ -745,10 +746,10 @@ elif control == 'XAI':
     st.title('XAI - Explainable Artificial Intelligence')
     st.markdown("The dashboard will help the users verify the efficiency of the classification model used here")
     
-    st.sidebar.markdown('<h2 style="color:#E07C24;">Class Labels</h2>',unsafe_allow_html=True)
-    st.sidebar.markdown('<h3 style="color:#8D3DAF;">0 represents Need</h3>', unsafe_allow_html=True)
-    st.sidebar.markdown('<h3 style="color:#8D3DAF;">1 represents Availability</h3>', unsafe_allow_html=True)
-    st.sidebar.markdown('<h3 style="color:#8D3DAF;">2 represents Others</h3>', unsafe_allow_html=True)
+    st.sidebar.markdown('<h2 style="color:#E07C24;font-family: Garamond, serif;">Class Labels</h2>',unsafe_allow_html=True)
+    st.sidebar.markdown('<h3 style="color:#8D3DAF;font-family: Garamond, serif;">0 represents Need</h3>', unsafe_allow_html=True)
+    st.sidebar.markdown('<h3 style="color:#8D3DAF;font-family: Garamond, serif;">1 represents Availability</h3>', unsafe_allow_html=True)
+    st.sidebar.markdown('<h3 style="color:#8D3DAF;font-family: Garamond, serif;">2 represents Others</h3>', unsafe_allow_html=True)
        
     h = st.slider('Select the Tweet using the slider', 0, len(X)-1, 18)       
     idx=0 # the rows of the dataset

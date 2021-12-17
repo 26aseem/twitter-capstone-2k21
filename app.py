@@ -35,6 +35,7 @@ import plotly.express as px
 import time
 import pydeck as pdk
 import SessionState  # Assuming SessionState.py lives on this folder
+
     
 
 st.sidebar.title('Dashboard Control')
@@ -746,7 +747,7 @@ elif control == 'XAI':
     explainer_lime = lime.lime_tabular.LimeTabularExplainer(X_train,feature_names=feature_names,verbose=True, mode='classification', class_names=[0,1,2])
     # Streamlit Code starts here
     st.title('XAI - Explainable Artificial Intelligence')
-    st.markdown("The dashboard will help the users verify the efficiency of the classification model used here")
+    st.markdown("The dashboard will help explain the individual predictions using LIME visualization technique")
     
     st.sidebar.markdown('<h2 style="color:#E07C24;font-family: Garamond, serif;">Class Labels</h2>',unsafe_allow_html=True)
     st.sidebar.markdown('<h3 style="color:#8D3DAF;font-family: Garamond, serif;">0 represents Need</h3>', unsafe_allow_html=True)
